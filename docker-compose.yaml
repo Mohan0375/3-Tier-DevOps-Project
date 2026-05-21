@@ -6,7 +6,7 @@ services:
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Aditya
+      MYSQL_ROOT_PASSWORD: Sushma
       MYSQL_DATABASE: crud_app
     volumes:
       - mysql-data:/var/lib/mysql
@@ -15,12 +15,12 @@ services:
       - "3306:3306"
 
   backend:
-    build: ./api
+    image: mohan118917/backend:latest
     container_name: backend-api
     environment:
       DB_HOST: mysql
       DB_USER: root
-      DB_PASSWORD: Aditya
+      DB_PASSWORD: Sushma
       DB_NAME: crud_app
       JWT_SECRET: devopsShackSuperSecretKey
       RESET_ADMIN_PASS: 'true'
@@ -30,7 +30,7 @@ services:
       - "5000:5000"
 
   frontend:
-    build: ./client
+    image: mohan118917/frontend:latest
     container_name: frontend-react
     ports:
       - "3000:80"
